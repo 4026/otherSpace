@@ -1,0 +1,64 @@
+{
+  "origin":["Around here, the otherspace is #signalStrength#.\n\n#scanResult#."],
+  "signalStrength" : [
+    "barely perceptible",
+    "almost tangible",
+    "but a distant, scratching whisper",
+    "dangerously congruent to our reality",
+    "discernable, if you know what to look for",
+    "influencing our reality in subtle ways",
+    "strong enough to be regarded through a thaumoscope"
+  ],
+  "scanResult" : [
+    "#testType.capitalize# picked up #testImplication#",
+    "#testType.capitalize# produced no useful results. However, #testType# revealed #testImplication#",
+    "#testType.capitalize# was aborted due to #environmentalFactor#.\n\n#scanResult#"
+  ],
+  "testType" : [ "#testAdjective.capitalize# #testVerb#", "The #testName# Test"],
+  "testAdjective" : [ "thaumic", "psychic", "ontological", "entropic", "null", "imaginative", "metaphorical", "metaphysical"],
+  "testVerb" : [ "Frequency Analysis", "Sampling", "Difference Testing", "Aliasing", "Chromatography"],
+  "testName" : [
+    "Immerman",
+    "Carswell",
+    "Antonov",
+    "Tesla-Hemmingway",
+    "Heisenberg",
+    "Gothenburg",
+    "Honeypot",
+    "Rubber Band"
+  ],
+  "environmentalFactor" : [
+    "#levelAdjective# levels of #uncountableTestResultNoun#",
+    "#levelAdjective# numbers of #countableTestResultNoun.s#"
+  ],
+  "levelAdjective" : ["high", "low", "inadequate", "overwhelming", "catastrophic", "insufficiently interesting"],
+  "countableTestResultNoun" : [ "spore"],
+  "uncountableTestResultNoun" : [ "#testAdjective# interference"],
+  "testImplication" : [
+    "#environmentalFactor#, which suggests the presence of #otherspaceLife#",
+    "#environmentalFactor#, which suggests the presence of #otherspaceLife.s#"
+  ],
+  "otherspaceLife" : [
+    {"normal" : "#otherspaceLifeAdjective.a#, #otherspaceLifeAdjective# #otherspaceLifeNoun#", "s" : "#otherspaceLifeAdjective#, #otherspaceLifeAdjective# #otherspaceLifeNoun.s#"}
+  ],
+  "otherspaceLifeAdjective": [
+    "aimless",
+    "screaming",
+    "trapped",
+    "hunting",
+    "hungry",
+    "cruel",
+    "terrified",
+    "enraged",
+    "prowling",
+    "shivering",
+    "haunted"
+  ],
+  "otherspaceLifeNoun": [
+    {"normal" : "consciousness", "s" : "consciousnesses"},
+    {"normal" : "beast beyond our understanding", "s" : "beasts beyond our understanding"},
+    {"normal" : "echo of a former life", "s" : "echoes of a former life"},
+    "nightmare",
+    {"normal" : "fever-dream from one of our possible futures", "s" : "fever-dreams from one of our possible futures"}
+  ]
+}

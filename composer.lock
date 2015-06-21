@@ -1,0 +1,69 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "92de2290718e3f6557ce77ea19724d02",
+    "packages": [
+        {
+            "name": "four026/phable",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/4026/phable.git",
+                "reference": "ec57215844bf1b8d46ab9455e9dc90d86ce269ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/4026/phable/zipball/ec57215844bf1b8d46ab9455e9dc90d86ce269ec",
+                "reference": "ec57215844bf1b8d46ab9455e9dc90d86ce269ec",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Four026\\Phable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Hallett",
+                    "email": "4026@4026.me.uk",
+                    "homepage": "http://4026.me.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A PHP library for processing generative grammars",
+            "homepage": "http://github.com/4026/phable",
+            "keywords": [
+                "Rant",
+                "Tracery",
+                "generative grammar",
+                "procedural generation",
+                "random",
+                "story"
+            ],
+            "time": "2015-06-21 11:21:37"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "four026/phable": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.4.0"
+    },
+    "platform-dev": []
+}
