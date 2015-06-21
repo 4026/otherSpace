@@ -51,10 +51,12 @@
         var $buttonScan = $('#button_scan');
 
         if (!navigator.geolocation){
-            $buttonScan.before("<div class='alert alert-danger' role='alert'>Geolocation is not supported by your browser</div>");
+            $('#div_output').html("<div class='alert alert-danger' role='alert'>Geolocation is not supported by your browser</div>");
         }
 
         $buttonScan.click(function() {
+
+            $('#div_output').html('<p class="text-center"><img src="img/loading_spinner.gif" /></p>');
             navigator.geolocation.getCurrentPosition(
                 function success(position) {
                     var latitude  = Math.floor(position.coords.latitude * 1000) % 10000;
@@ -64,7 +66,7 @@
                     $('#div_output').load('getStory.php', { geohash : location_digest });
                 },
                 function error() {
-                    $('#button_scan').after("<div class='alert alert-warning' role='alert'>Unable to discern your location</div>");
+                    $('#div_output').html("<div class='alert alert-warning' role='alert'>Unable to discern your location</div>");
                 }
             );
         });
