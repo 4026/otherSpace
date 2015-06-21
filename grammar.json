@@ -1,13 +1,34 @@
 {
-  "origin":["Around here, the otherspace is #signalStrength#.\n\n#scanResult#."],
+  "origin":["Your current location in the real world corresponds to the otherspace region that roughly translates as #regionName#.\n\nHere, the otherspace is #signalStrength#.\n\n#scanResult#."],
+  "regionName" : ["The #regionAdjective.capitalise# #regionNoun.capitalise#"],
+  "regionAdjective" : ["frozen", "forgotten", "wistful", "nostalgic", "wailing", "windswept", "blasted", "dusky", "tear-stained", "solitary"],
+  "regionNoun" : ["crater", "ocean", "spires", "sands", "wastes", "swamp", "void", "sea", "pool", "depths", "cavern", "pit", "tree"],
   "signalStrength" : [
-    "barely perceptible",
-    "almost tangible",
     "but a distant, scratching whisper",
-    "dangerously congruent to our reality",
-    "discernable, if you know what to look for",
-    "influencing our reality in subtle ways",
-    "strong enough to be regarded through a thaumoscope"
+    "barely perceptible",
+    "only strong enough to be regarded through a thaumoscope",
+    "influencing our reality in subtle ways, such as that #weirdThing#",
+    "discernable, if you know what to look for. For example, there may be #weirdThing.a# nearby",
+    "almost tangible. Be on the lookout for #weirdThing.a#",
+    "dangerously congruent to our reality. Beware of #weirdThing.s# or #weirdThing.s#"
+  ],
+  "weirdThing" : [
+    {"normal" : "#weirdAdjective# #weirdNoun#", "s" :"#weirdAdjective# #weirdNoun.s#"},
+    {"normal" : "#weirdPersonAdjective# #weirdPersonNoun# with #weirdPersonAccoutrement.a#", "s" :"#weirdPersonAdjective# #weirdPersonNoun.s# with #weirdPersonAccoutrement.s#"}
+  ],
+  "weirdAdjective" : ["distant", "humming", "menacing", "illusory", "perfectly ordinary", "distinctive"],
+  "weirdNoun" : ["aerial", "tower", "doorway", "cloud", "rumble", "aroma"],
+  "weirdPersonAdjective" : ["crying", "mumbling", "muttering", "giggling", "whistling", "hurrying"],
+  "weirdPersonNoun" : ["man", "woman", "boy", "girl", "crone", "youth", "policeman", "driver"],
+  "weirdPersonAccoutrement": ["frosty smile",
+    {"normal": "bloodshot eyes", "s": "bloodshot eyes"},
+    {"normal": "dark glasses", "s": "dark glasses"},
+    "monocle",
+    "capacious bag",
+    "hunted expression",
+    "limp",
+    "musical instrument",
+    "sour demeanor"
   ],
   "scanResult" : [
     "#testType.capitalize# picked up #testImplication#",
@@ -31,9 +52,9 @@
     "#levelAdjective# levels of #uncountableTestResultNoun#",
     "#levelAdjective# numbers of #countableTestResultNoun.s#"
   ],
-  "levelAdjective" : ["high", "low", "inadequate", "overwhelming", "catastrophic", "insufficiently interesting"],
-  "countableTestResultNoun" : [ "spore"],
-  "uncountableTestResultNoun" : [ "#testAdjective# interference"],
+  "levelAdjective" : ["high", "low", "inadequate", "overwhelming", "catastrophic", "dangerous"],
+  "countableTestResultNoun" : [ "spore", "stalagmite", "burrow", "discarded exoskeleton", "husk", "whisper"],
+  "uncountableTestResultNoun" : [ "#testAdjective# interference", "foreground noise", "geometry inversion"],
   "testImplication" : [
     "#environmentalFactor#, which suggests the presence of #otherspaceLife#",
     "#environmentalFactor#, which suggests the presence of #otherspaceLife.s#"
