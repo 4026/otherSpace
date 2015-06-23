@@ -35,9 +35,10 @@
     </div>
 
 
-    <div id="div_output">
+    <div id="div_output"></div>
 
-    </div>
+    <div id="map-canvas" style="height: 200px;"></div>
+
 </div>
 
 
@@ -45,6 +46,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
 
 <script type="text/javascript">
     $(function() {
@@ -57,17 +60,44 @@
         $buttonScan.click(function() {
 
             $('#div_output').html('<p class="text-center"><img src="img/loading_spinner.gif" /></p>');
+
             navigator.geolocation.getCurrentPosition(
                 function success(position) {
-                    var latitude  = Math.floor(position.coords.latitude * 1000) % 10000;
-                    var longitude = Math.floor(position.coords.longitude * 1000) % 10000;
-                    var location_digest = longitude * 10000 + latitude;
 
-                    $('#div_output').load('getStory.php', { geohash : location_digest });
+                    //Draw google map
+                    var map = new google.maps.Map(document.getElementById('map-canvas'), {
+                        zoom: 15,
+                        center: {lat: position.coords.latitude, lng: position.coords.longitude}
+                    });
+
+                    //Draw zone rect
+                    var lat_tl = Math.floor(position.coords.latitude * 500) / 500;
+                    var long_tl = Math.floor(position.coords.longitude * 500) / 500;
+                    var lat_br = lat_tl + 0.002;
+                    var long_br = long_tl + 0.002;
+                    var rectangle = new google.maps.Rectangle({
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 0.8,
+                        strokeWeight: 2,
+                        fillColor: '#FF0000',
+                        fillOpacity: 0.35,
+                        map: map,
+                        bounds: new google.maps.LatLngBounds(
+                            new google.maps.LatLng(lat_tl, long_tl),
+                            new google.maps.LatLng(lat_br, long_br))
+                    });
+
+                    $('#div_output').load('getStory.php', { lat : position.coords.latitude, long: position.coords.longitude });
                 },
                 function error() {
                     $('#div_output').html("<div class='alert alert-warning' role='alert'>Unable to discern your location</div>");
+                },
+                {
+                    enableHighAccuracy : true,
+                    maximumAge : 10000,
+                    timeout : 10000
                 }
+
             );
         });
 
