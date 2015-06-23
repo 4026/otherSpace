@@ -11,6 +11,11 @@
       "role": "Developer"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "Four026\\Otherspace\\": "src/"
+    }
+  },
   "require": {
     "php": ">=5.4.0",
     "four026/phable": "dev-master"
