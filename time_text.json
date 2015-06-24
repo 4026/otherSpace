@@ -1,11 +1,13 @@
 {
   "origin":["Right now, in #regionName#, #event#."],
   "event" : [
+    "all is still",
     "a chill sandstorm rages silently",
-    "#artefact.a# #artefactVerb#"
+    "two wounded minds grapple for dominance",
+    "#artefact# #artefactVerb#"
   ],
   "artefact" : [
-    "#artefactAdjective# #artefactNoun#"
+    "#artefactAdjective.a# #artefactNoun#"
   ],
   "artefactAdjective" : [
     "small",
@@ -13,18 +15,23 @@
     "broken",
     "ancient",
     "wind-worn",
-    "once-loved"
+    {"normal" : "once-loved", "a" : "once-loved"},
+    "corroded",
+    "forgotten"
   ],
   "artefactNoun" : [
     "music box",
     "pocket watch",
-    "figurine of a child",
+    "figurine of a bird",
     "locket",
-    "bone drum"
+    "bone drum",
+    "doll"
   ],
   "artefactVerb" : [
     "emits gentle, haunting music that unpicks the sanity of those that hear it",
     "is being guarded jealously",
-    "has been washed here by the currents"
+    "has been washed here by the currents",
+    "is resonating psychically with someone nearby you in the real world",
+    "has been laid out as bait for the unwary"
   ]
 }

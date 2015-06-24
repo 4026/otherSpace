@@ -81,7 +81,7 @@ class Otherspace implements \JsonSerializable
     function jsonSerialize()
     {
         return [
-            'locationName' => '<p>Your current location in the real world corresponds to the otherspace region that roughly translates as '.$this->getLocationName().'</p>',
+            'locationName' => '<p>Your current location in the real world corresponds to the otherspace region that roughly translates as '.$this->getLocationName().'.</p>',
             'locationText' => '<p>'.str_replace("\n\n", "</p><p>", $this->getLocationText()).'</p>',
             'timeText' => '<p>'.$this->getTimeText().'</p>',
         ];
