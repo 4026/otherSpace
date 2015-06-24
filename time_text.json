@@ -7,7 +7,7 @@
   "artefact" : [
     "#artefactAdjective# #artefactNoun#"
   ],
-  "artefactNoun" : [
+  "artefactAdjective" : [
     "small",
     "abandoned",
     "broken",
@@ -23,7 +23,7 @@
     "bone drum"
   ],
   "artefactVerb" : [
-    "emits gentle, haunting music that picks at the sanity of those that hear it",
+    "emits gentle, haunting music that unpicks the sanity of those that hear it",
     "is being guarded jealously",
     "has been washed here by the currents"
   ]
