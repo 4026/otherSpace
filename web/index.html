@@ -87,7 +87,11 @@
                             new google.maps.LatLng(lat_br, long_br))
                     });
 
-                    $('#div_output').load('getStory.php', { lat : position.coords.latitude, long: position.coords.longitude });
+                    $.post('getStory.php', { lat : position.coords.latitude, long: position.coords.longitude })
+                        .done(function(data) {
+                            $('#div_output').html(data['locationName'] + data['locationText'] + data['timeText']);
+                        })
+                    ;
                 },
                 function error() {
                     $('#div_output').html("<div class='alert alert-warning' role='alert'>Unable to discern your location</div>");

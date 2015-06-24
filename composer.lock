@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "92de2290718e3f6557ce77ea19724d02",
+    "hash": "0649f17060fa0d08dbab97734bc486e6",
     "packages": [
         {
             "name": "four026/phable",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/4026/phable.git",
-                "reference": "ec57215844bf1b8d46ab9455e9dc90d86ce269ec"
+                "reference": "2a4d9b2bf94e54b8588a8d1df123baa3fbea399f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/4026/phable/zipball/ec57215844bf1b8d46ab9455e9dc90d86ce269ec",
-                "reference": "ec57215844bf1b8d46ab9455e9dc90d86ce269ec",
+                "url": "https://api.github.com/repos/4026/phable/zipball/2a4d9b2bf94e54b8588a8d1df123baa3fbea399f",
+                "reference": "2a4d9b2bf94e54b8588a8d1df123baa3fbea399f",
                 "shasum": ""
             },
             "require": {
@@ -51,7 +51,7 @@
                 "random",
                 "story"
             ],
-            "time": "2015-06-21 11:21:37"
+            "time": "2015-06-24 08:16:37"
         }
     ],
     "packages-dev": [],

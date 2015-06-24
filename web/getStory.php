@@ -13,5 +13,6 @@ if (!isset($_POST['lat']) || !isset($_POST['long'])) {
 }
 
 $otherspace = new Otherspace(floatval($_POST['lat']), floatval($_POST['long']));
-?>
-<p><?php echo str_replace("\n\n", "</p><p>", $otherspace->getText()); ?></p>
+
+header('Content-Type: application/json');
+echo json_encode($otherspace);

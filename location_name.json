@@ -1,0 +1,35 @@
+{
+  "origin" : ["The #regionAdjective.capitalise# #regionNoun.capitalise#" ],
+  "regionAdjective": [
+    "frozen",
+    "forgotten",
+    "wistful",
+    "nostalgic",
+    "wailing",
+    "windswept",
+    "blasted",
+    "dusky",
+    "tear-stained",
+    "solitary",
+    "howling",
+    "hungry"
+  ],
+  "regionNoun": [
+    "crater",
+    "ocean",
+    "spires",
+    "sands",
+    "wastes",
+    "swamp",
+    "void",
+    "sea",
+    "pool",
+    "depths",
+    "cavern",
+    "pit",
+    "tree",
+    "hollow",
+    "scar",
+    "henge"
+  ]
+}

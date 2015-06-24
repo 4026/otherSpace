@@ -1,0 +1,30 @@
+{
+  "origin":["Right now, in #regionName#, #event#."],
+  "event" : [
+    "a chill sandstorm rages silently",
+    "#artefact.a# #artefactVerb#"
+  ],
+  "artefact" : [
+    "#artefactAdjective# #artefactNoun#"
+  ],
+  "artefactNoun" : [
+    "small",
+    "abandoned",
+    "broken",
+    "ancient",
+    "wind-worn",
+    "once-loved"
+  ],
+  "artefactNoun" : [
+    "music box",
+    "pocket watch",
+    "figurine of a child",
+    "locket",
+    "bone drum"
+  ],
+  "artefactVerb" : [
+    "emits gentle, haunting music that picks at the sanity of those that hear it",
+    "is being guarded jealously",
+    "has been washed here by the currents"
+  ]
+}
