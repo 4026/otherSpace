@@ -37,7 +37,7 @@
 
     <div id="div_output"></div>
 
-    <div id="map-canvas" style="height: 200px;"></div>
+    <div id="map-canvas" style="height: 400px; margin-top: 100px;"></div>
 
 </div>
 
@@ -50,6 +50,44 @@
 
 
 <script type="text/javascript">
+
+    function processStory(data) {
+        $('#div_output').html(data['locationName'] + data['locationText'] + data['timeText']);
+
+        //Draw google map
+        var map = new google.maps.Map(document.getElementById('map-canvas'), {
+            zoom: 15,
+            center: {lat: data.location.lat, lng: data.location.long}
+        });
+
+        //Draw location marker
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(data.location.lat,  data.location.long),
+            map: map,
+            title: 'You'
+        });
+
+        //Draw zone rect
+        var rectangle = new google.maps.Rectangle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map,
+            bounds: new google.maps.LatLngBounds(
+                new google.maps.LatLng(data['location_bounds'][0]['lat'], data['location_bounds'][0]['long']),
+                new google.maps.LatLng(data['location_bounds'][1]['lat'], data['location_bounds'][1]['long']))
+        });
+
+        google.maps.event.addListenerOnce(map, 'click', function(click) {
+            map.setCenter(click.LatLng);
+            $.post('getStory.php', { lat : click.latLng.lat(), long: click.latLng.lng() })
+                .done(processStory)
+            ;
+        });
+    }
+
     $(function() {
         var $buttonScan = $('#button_scan');
 
@@ -63,34 +101,8 @@
 
             navigator.geolocation.getCurrentPosition(
                 function success(position) {
-
-                    //Draw google map
-                    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-                        zoom: 15,
-                        center: {lat: position.coords.latitude, lng: position.coords.longitude}
-                    });
-
-                    //Draw zone rect
-                    var lat_tl = Math.floor(position.coords.latitude * 500) / 500;
-                    var long_tl = Math.floor(position.coords.longitude * 500) / 500;
-                    var lat_br = lat_tl + 0.002;
-                    var long_br = long_tl + 0.002;
-                    var rectangle = new google.maps.Rectangle({
-                        strokeColor: '#FF0000',
-                        strokeOpacity: 0.8,
-                        strokeWeight: 2,
-                        fillColor: '#FF0000',
-                        fillOpacity: 0.35,
-                        map: map,
-                        bounds: new google.maps.LatLngBounds(
-                            new google.maps.LatLng(lat_tl, long_tl),
-                            new google.maps.LatLng(lat_br, long_br))
-                    });
-
                     $.post('getStory.php', { lat : position.coords.latitude, long: position.coords.longitude })
-                        .done(function(data) {
-                            $('#div_output').html(data['locationName'] + data['locationText'] + data['timeText']);
-                        })
+                        .done(processStory)
                     ;
                 },
                 function error() {
