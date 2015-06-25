@@ -7,12 +7,29 @@
     "nostalgic",
     "wailing",
     "windswept",
+    "misty",
     "blasted",
     "dusky",
     "tear-stained",
     "solitary",
     "howling",
-    "hungry"
+    "hungry",
+    "cantankerous",
+    "silent",
+    "infinite",
+    "long",
+    "longing",
+    "obsidian",
+    "ivory",
+    "alabaster",
+    "broken",
+    "shattered",
+    "brimstone",
+    "sulphurous",
+    "mercurial",
+    "indigo",
+    "shifting",
+    "#person1.capitalise#-#person2.capitalise#'s"
   ],
   "regionNoun": [
     "crater",
@@ -30,6 +47,28 @@
     "tree",
     "hollow",
     "scar",
-    "henge"
+    "henge",
+    "barrow",
+    "marsh",
+    "moor",
+    "causeway",
+    "roost",
+    "ruins",
+    "plateau",
+    "groves"
+  ],
+  "person1" : [
+    "night",
+    "dream",
+    "chaos"
+  ],
+  "person2" : [
+    "scryer",
+    "seer",
+    "father",
+    "mother",
+    "bringer",
+    "maker",
+    "eater"
   ]
 }
