@@ -7,21 +7,20 @@ use Four026\Phable\Trace;
 
 class Otherspace implements \JsonSerializable
 {
-    const LOCATION_NAME_GRAMMAR = '/../location_name.json';
-    const LOCATION_TEXT_GRAMMAR = '/../location_text.json';
-    const TIME_TEXT_GRAMMAR = '/../time_text.json';
+    const GRAMMAR_PATH = '/../grammar.json';
 
     // The difference in degrees between the latitude of the top of the tile and the bottom of the tile.
     const TILE_HEIGHT_DEG = 0.005;
+    private $grammar;
 
     /**
      * @var int
      */
-    private $location_digest;
+    private $location_seed;
     /**
      * @var int
      */
-    private $time_digest;
+    private $time_seed;
     /**
      * @var string
      */
@@ -39,6 +38,7 @@ class Otherspace implements \JsonSerializable
     {
         $this->location = ['lat' => $latitude, 'long' => $longitude];
 
+        //Calculate region bounds
         $tile_width = self::TILE_HEIGHT_DEG / cos(deg2rad($latitude));
         $this->location_bounds = [];
         $this->location_bounds[] = [
@@ -50,11 +50,16 @@ class Otherspace implements \JsonSerializable
             'long' => $this->location_bounds[0]['long'] + $tile_width
         ];
 
-        $this->location_digest = intval(
+        //Calculate location and time seeds
+        $this->location_seed = intval(
             (floor($longitude / $tile_width) % 10000) * 10000
             + floor($latitude / self::TILE_HEIGHT_DEG) % 10000
         );
-        $this->time_digest = intval(floor(time() / 3600)) + $this->location_digest;
+        $this->time_seed = intval(floor(time() / 3600)) + $this->location_seed;
+
+        //Load grammar
+        $this->grammar = new Grammar(__DIR__ . self::GRAMMAR_PATH);
+        $this->grammar->addNode('regionName', new Node($this->getLocationName()));
     }
 
     /**
@@ -63,9 +68,11 @@ class Otherspace implements \JsonSerializable
     public function getLocationName()
     {
         if (!isset($this->location_name)) {
-            $grammar = new Grammar(__DIR__ . self::LOCATION_NAME_GRAMMAR);
-            $trace = new Trace($grammar);
-            $trace->setSeed($this->location_digest);
+            $trace = new Trace($this->grammar);
+            $trace
+                ->setSeed($this->location_seed)
+                ->setStartSymbol('regionNameOrigin')
+            ;
 
             $this->location_name = $trace->getText();
         }
@@ -78,11 +85,11 @@ class Otherspace implements \JsonSerializable
      */
     public function getLocationText()
     {
-        $grammar = new Grammar(__DIR__ . self::LOCATION_TEXT_GRAMMAR);
-        $grammar->addNode('regionName', new Node($this->getLocationName()));
-
-        $trace = new Trace($grammar);
-        $trace->setSeed($this->location_digest);
+        $trace = new Trace($this->grammar);
+        $trace
+            ->setSeed($this->location_seed)
+            ->setStartSymbol('locationTextOrigin')
+        ;
 
         return $trace->getText();
     }
@@ -91,11 +98,11 @@ class Otherspace implements \JsonSerializable
      */
     public function getTimeText()
     {
-        $grammar = new Grammar(__DIR__ . self::TIME_TEXT_GRAMMAR);
-        $grammar->addNode('regionName', new Node($this->getLocationName()));
-
-        $trace = new Trace($grammar);
-        $trace->setSeed($this->time_digest);
+        $trace = new Trace($this->grammar);
+        $trace
+            ->setSeed($this->time_seed)
+            ->setStartSymbol('timeOrigin')
+        ;
 
         return $trace->getText();
     }
