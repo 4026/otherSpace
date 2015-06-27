@@ -11,18 +11,18 @@ var MAPTYPE_ID = 'otherspace_style';
 function processStory(data)
 {
     $('#p_loadingSpinner').addClass('hidden');
+    $('#div_output').removeClass('hidden').hide().fadeIn("slow");
 
-    var $output_div = $('#div_output').empty();
+    var $location_panel_body = $('#panel_location').children('.panel-body').empty();
+    var $time_panel_body = $('#panel_time').children('.panel-body').empty();
 
     data['locationText'].forEach(function (paragraph) {
-        $('<p>').text(paragraph).appendTo($output_div);
+        $('<p>').text(paragraph).appendTo($location_panel_body);
     });
 
     data['timeText'].forEach(function (paragraph) {
-        $('<p>').text(paragraph).appendTo($output_div);
+        $('<p>').text(paragraph).appendTo($time_panel_body);
     });
-
-    $output_div.removeClass('hidden');
 
     //Draw google map
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -79,6 +79,7 @@ function processStory(data)
             new google.maps.LatLng(data['location_bounds'][0]['lat'], data['location_bounds'][0]['long']),
             new google.maps.LatLng(data['location_bounds'][1]['lat'], data['location_bounds'][1]['long']))
     });
+    map.setCenter(rectangle.getBounds().getCenter());
 
     // Draw zone info
     var infowindow = new google.maps.InfoWindow({
@@ -104,8 +105,8 @@ function processStory(data)
  */
 function displayError(error_text)
 {
-    $('#p_loadingSpinner').hide();
-    $('#div_output').html("<div class='alert alert-danger' role='alert'>" + error_text + "</div>").show();
+    $('#p_loadingSpinner').addClass('hidden');
+    $("<div class='alert alert-danger' role='alert'>" + error_text + "</div>").appendTo('#div_errors');
 }
 
 $(function () {
@@ -118,8 +119,8 @@ $(function () {
     });
 
     $('#button_scan').click(function () {
-
         $('#p_loadingSpinner').removeClass('hidden');
+        $('#div_output').addClass('hidden');
 
         navigator.geolocation.getCurrentPosition(
             function success(position) {
