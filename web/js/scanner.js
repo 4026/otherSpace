@@ -90,13 +90,6 @@ function processStory(data)
         )
     });
     infowindow.open(map);
-
-    google.maps.event.addListenerOnce(map, 'click', function (click) {
-        map.setCenter(click.LatLng);
-        $.post('getStory.php', {lat: click.latLng.lat(), long: click.latLng.lng()})
-            .done(processStory)
-        ;
-    });
 }
 
 /**
