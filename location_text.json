@@ -79,7 +79,8 @@
     "enraged",
     "prowling",
     "shivering",
-    "haunted"
+    "haunted",
+    "shrieking"
   ],
   "otherspaceLifeNoun": [
     {"normal" : "consciousness", "s" : "consciousnesses"},

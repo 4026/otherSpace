@@ -2,9 +2,50 @@
   "origin":["Right now, in #regionName#, #event#."],
   "event" : [
     "all is still",
-    "a chill sandstorm rages silently",
-    "two wounded minds grapple for dominance",
+    "#weather.a# #weatherVerb#",
+    "#combatantNumber# #combatant.s# #combatantVerb#",
     "#artefact# #artefactVerb#"
+  ],
+  "weather" : [
+    "chill sandstorm",
+    {"normal" : "The Maelstrom", "a":"The Maelstrom"},
+    "briny monsoon",
+    {"normal" : "fetid air", "a" : "the fetid air"},
+    "clammy fog",
+    "oily mist",
+    "choking stench"
+  ],
+  "weatherVerb" : [
+    "rages #weatherAdverb#",
+    "swirls #weatherAdverb#",
+    "swallows all",
+    "drowns everything",
+    "blots out all light"
+  ],
+  "weatherAdverb" : [
+    "silently",
+    "ceaselessly",
+    "without relent",
+    "thickly",
+    "heavily",
+    "remorselessly"
+  ],
+  "combatantNumber": ["two", "three", "several", "a multitude of", "flocks of", "swarms of"],
+  "combatant": [
+    "wounded mind",
+    "feathered, shrieking creature",
+    "pitiable scavenger",
+    "chittering insect",
+    "glistening amphibian",
+    "writhing, formless muscle sac"
+  ],
+  "combatantVerb": [
+    "grapple for dominance",
+    "circle each other looking for weakness",
+    "watch each other warily",
+    "eviscerate themselves in a fit of madness",
+    "bicker enviously over #artefact#",
+    "cower in terror before #artefact#"
   ],
   "artefact" : [
     "#artefactAdjective.a# #artefactNoun#"
@@ -25,7 +66,10 @@
     "figurine of a bird",
     "locket",
     "bone drum",
-    "doll"
+    "doll",
+    "glass marble",
+    "bag of teeth",
+    "mask"
   ],
   "artefactVerb" : [
     "emits gentle, haunting music that unpicks the sanity of those that hear it",
