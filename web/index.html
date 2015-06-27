@@ -11,8 +11,11 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- Theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/darkly/bootstrap.min.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/css/scanner.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,98 +31,25 @@
 <div class="container">
 
     <div class="text-center" style="padding: 40px 0;">
-        <button type="button" id="button_scan" class="btn btn-primary">
-            <span class="glyphicon glyphicon-scale"></span>
+        <button type="button" id="button_scan" class="btn btn-primary btn-lg">
+            <span class="glyphicon glyphicon-dashboard"></span>
             Scan the otherspace
         </button>
     </div>
 
+    <p id="p_loadingSpinner" class="text-center hidden"><img src="img/loading_spinner.gif" /></p>
 
-    <div id="div_output"></div>
+    <div id="div_output" class="hidden"></div>
 
     <div id="map-canvas" style="height: 400px; margin-top: 100px;"></div>
 
 </div>
 
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-
-
-<script type="text/javascript">
-
-    function processStory(data) {
-        $('#div_output').html(data['locationName'] + data['locationText'] + data['timeText']);
-
-        //Draw google map
-        var map = new google.maps.Map(document.getElementById('map-canvas'), {
-            zoom: 15,
-            center: {lat: data.location.lat, lng: data.location.long}
-        });
-
-        //Draw location marker
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(data.location.lat,  data.location.long),
-            map: map,
-            title: 'You'
-        });
-
-        //Draw zone rect
-        var rectangle = new google.maps.Rectangle({
-            strokeColor: '#FF0000',
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: '#FF0000',
-            fillOpacity: 0.35,
-            map: map,
-            bounds: new google.maps.LatLngBounds(
-                new google.maps.LatLng(data['location_bounds'][0]['lat'], data['location_bounds'][0]['long']),
-                new google.maps.LatLng(data['location_bounds'][1]['lat'], data['location_bounds'][1]['long']))
-        });
-
-        google.maps.event.addListenerOnce(map, 'click', function(click) {
-            map.setCenter(click.LatLng);
-            $.post('getStory.php', { lat : click.latLng.lat(), long: click.latLng.lng() })
-                .done(processStory)
-            ;
-        });
-    }
-
-    $(function() {
-        var $buttonScan = $('#button_scan');
-
-        if (!navigator.geolocation){
-            $('#div_output').html("<div class='alert alert-danger' role='alert'>Geolocation is not supported by your browser</div>");
-        }
-
-        $buttonScan.click(function() {
-
-            $('#div_output').html('<p class="text-center"><img src="img/loading_spinner.gif" /></p>');
-
-            navigator.geolocation.getCurrentPosition(
-                function success(position) {
-                    $.post('getStory.php', { lat : position.coords.latitude, long: position.coords.longitude })
-                        .done(processStory)
-                    ;
-                },
-                function error() {
-                    $('#div_output').html("<div class='alert alert-warning' role='alert'>Unable to discern your location</div>");
-                },
-                {
-                    enableHighAccuracy : true,
-                    maximumAge : 10000,
-                    timeout : 10000
-                }
-
-            );
-        });
-
-
-    });
-</script>
+<script type="text/javascript" src="/js/scanner.js"></script>
 
 </body>
 </html>

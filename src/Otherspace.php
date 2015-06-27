@@ -79,6 +79,8 @@ class Otherspace implements \JsonSerializable
     public function getLocationText()
     {
         $grammar = new Grammar(__DIR__ . self::LOCATION_TEXT_GRAMMAR);
+        $grammar->addNode('regionName', new Node($this->getLocationName()));
+
         $trace = new Trace($grammar);
         $trace->setSeed($this->location_digest);
 
@@ -90,7 +92,8 @@ class Otherspace implements \JsonSerializable
     public function getTimeText()
     {
         $grammar = new Grammar(__DIR__ . self::TIME_TEXT_GRAMMAR);
-        $grammar->addNode('regionName', new Node($this->location_name));
+        $grammar->addNode('regionName', new Node($this->getLocationName()));
+
         $trace = new Trace($grammar);
         $trace->setSeed($this->time_digest);
 
@@ -110,9 +113,9 @@ class Otherspace implements \JsonSerializable
         return [
             'location' => $this->location,
             'location_bounds' => $this->location_bounds,
-            'locationName' => '<p>Your current location in the real world corresponds to the otherspace region that roughly translates as '.$this->getLocationName().'.</p>',
-            'locationText' => '<p>'.str_replace("\n\n", "</p><p>", $this->getLocationText()).'</p>',
-            'timeText' => '<p>'.$this->getTimeText().'</p>'
+            'locationName' => $this->getLocationName(),
+            'locationText' => explode("\n\n", $this->getLocationText()),
+            'timeText' => explode("\n\n", $this->getTimeText())
         ];
     }
 }

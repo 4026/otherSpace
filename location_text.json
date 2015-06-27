@@ -1,5 +1,5 @@
 {
-  "origin":["Here, the otherspace is #signalStrength#.\n\n#scanResult#."],
+  "origin":["Here, the otherspace is #signalStrength#.\n\nYour current location in the real world corresponds to the otherspace region that roughly translates as #regionName#.\n\n#scanResult#."],
   "signalStrength" : [
     "but a distant, scratching whisper",
     "barely perceptible",
